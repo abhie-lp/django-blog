@@ -1,2 +1,5 @@
 sk.txt
 .vscode
+blog/__pycache__/*
+blog/migrations/__pycache__/*
+mysite/__pycache__/*
