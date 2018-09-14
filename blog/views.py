@@ -6,7 +6,7 @@ def post_list(request):
     return render(request, "blog/list.html", {"posts": posts})
 
 
-def post_detail(request, year, month, day, slug):
+def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post,
                                     status="published",
                                     publish__year=year,
