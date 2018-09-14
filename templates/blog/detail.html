@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load blog_tags %}
 
 {% block title %} {{post.title}}{% endblock title %}
 {% block content %}
@@ -7,10 +8,10 @@
         Published {{post.publish}} by {{post.author}}
     </p>
     <hr>
-    {{post.body|linebreaks}}
+    {{post.body|linebreaks|markdown}}
     <p><a href="{% url 'blog:post_share' post.id %}">Share this Post through e-mail</a></p>
     <hr>
-    
+
     <h2>Similar Posts</h2>
     {% for post in similar_posts %}
         <p><a href="{{post.get_absolute_url}}">{{post.title}}</a></p>

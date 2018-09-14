@@ -19,3 +19,11 @@ from django.db.models import Count
 @register.simple_tag
 def most_commented_posts(count=5):
     return Post.published.annotate(total_comments=Count("comments")).order_by("-total_comments")[:count]
+
+
+from django.utils.safestring import mark_safe
+import markdown
+
+@register.filter(name="markdown")
+def markdown_format(text):
+    return mark_safe(markdown.markdown(text))
