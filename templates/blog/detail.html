@@ -8,4 +8,5 @@
     </p>
     <hr>
     {{post.body|linebreaks}}
+    <p><a href="{% url 'blog:post_share' post.id %}">Share this Post through e-mail</a></p>
 {% endblock content %}
