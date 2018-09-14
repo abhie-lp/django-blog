@@ -112,3 +112,10 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, "static"),
+
+EMAIL_HOST = "smtp.gmail.com"
+with open("enp.txt", "r") as enp:
+    EMAIL_HOST_USER = enp.readline()
+    EMAIL_HOST_PASSWORD = enp.readline()
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
