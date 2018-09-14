@@ -1,6 +1,6 @@
 # Blog Application using Django==2.1 and Python==3.6.
-<br>
-Hello everyone.. Following Things have been implemented in this application
+
+###Following Things have been implemented in this application
 - Sharing of post through email
 - Comment on a post
 - Add tags to post
