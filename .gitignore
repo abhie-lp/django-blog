@@ -2,5 +2,6 @@ sk.txt
 .vscode
 blog/__pycache__/*
 blog/migrations/__pycache__/*
+blog/templatetags/__pycache__/*
 mysite/__pycache__/*
 enp.txt
