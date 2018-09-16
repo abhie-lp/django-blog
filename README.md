@@ -8,3 +8,5 @@
 - Show posts than contain similar tags of a post
 - Adding custom templates
 - Markdown support
+- Sitemaps
+- RSS Feeds
