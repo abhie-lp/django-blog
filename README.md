@@ -10,3 +10,4 @@
 - Markdown support
 - Sitemaps
 - RSS Feeds
+- POSTGRESQL Database
