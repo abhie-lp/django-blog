@@ -11,3 +11,4 @@
 - Sitemaps
 - RSS Feeds
 - POSTGRESQL Database
+- Seach Post

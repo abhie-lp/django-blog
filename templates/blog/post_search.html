@@ -3,7 +3,7 @@
 {% block title %}Search{% endblock title %}
 {% block content %}
     {% if query%}
-        <h1>Posts containing "{{quey}}"</h1>
+        <h1>Posts containing "{{query}}"</h1>
         <h3>{% with results.count as total_results %}
                 Fount {{total_results}} result{{total_results|pluralize}}
             {% endwith %}
