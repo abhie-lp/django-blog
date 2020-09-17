@@ -1,3 +1,4 @@
+from json import loads
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -111,3 +112,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = BASE_DIR / "static",
+
+with open("email_server.json") as f:
+    creds = loads(f.read())
+    EMAIL_HOST = creds["EMAIL_HOST"]
+    EMAIL_HOST_USER = creds["EMAIL_HOST_USER"]
+    EMAIL_HOST_PASSWORD = creds["EMAIL_HOST_PASSWORD"]
+    EMAIL_PORT = creds["EMAIL_PORT"]
+    EMAIL_USE_TLS = creds["EMAIL_USE_TLS"]
