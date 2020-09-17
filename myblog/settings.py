@@ -29,6 +29,10 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
+    "taggit"
+]
+
+INSTALLED_APPS += [
     "blog.apps.BlogConfig",
 ]
 
