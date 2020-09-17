@@ -29,6 +29,7 @@ h2 {
 #sidebar {
     float:right;
     width:30%;
+    margin-right: 10px;
     padding:10px;
     background:#efefef;
     height:100%;
@@ -49,19 +50,22 @@ p.date {
 
 /* forms */
 label {
-    float:left;
+    /*float:left;*/
     clear:both;
+    display: block;
     color:#333;
     margin-bottom:4px;
+    font-weight: bold;
 }
 input, textarea {
     clear:both;
-    float:left;
+    /*float:left;*/
     margin:0 0 10px;
     background:#ededed;
     border:0;
     padding:6px 10px;
     font-size:12px;
+    width: 90%;
 }
 input[type=submit] {
     font-weight:bold;
@@ -70,7 +74,17 @@ input[type=submit] {
     padding:10px 20px;
     font-size:14px;
     text-transform:uppercase;
+    width: 200px;
 }
+
+textarea#id_body {
+    height: 200px;
+}
+
+hr {
+    margin-right: 8%;
+}
+
 .errorlist {
     color:#cc0033;
     float:left;
@@ -81,6 +95,7 @@ input[type=submit] {
 /* comments */
 .comment {
     padding:10px;
+    width: 90%;
 }
 .comment:nth-child(even) {
     background:#efefef;
