@@ -18,6 +18,9 @@
     <div id="sidebar">
       <h2>My Blog</h2>
       <p>This is my blog. There are <strong>{% total_posts %}</strong> posts so far.</p>
+      <hr>
+      <h3>Latest Posts</h3>
+      {% show_latest_posts 15 %}
     </div>
   </body>
 </html>
