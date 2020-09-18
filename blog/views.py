@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Count
 
 from taggit.models import Tag
 
@@ -64,6 +65,18 @@ def post_detail(request, year, month, day, post):
     else:
         comment_form = CommentForm()
     
+    # Get ids of all the tags in the current post
+    post_tag_ids = post.tags.values_list("id", flat=True)
+    
+    # Filter out published posts which have any of the ids excluding current
+    # post
+    similar_posts = Post.published.filter(tags__in=post_tag_ids)\
+                                  .exclude(id=post.id)
+    # Arrange the post latest posts with maximum mathcing tags.
+    similar_posts = similar_posts.annotate(same_tags=Count("tags"))\
+                                 .order_by("-same_tags", "-publish")[:5]
+    
     return render(request, "blog/post/detail.html",
                   {"post": post, "comments": comments,
-                   "new_comment": new_comment, "comment_form": comment_form})
+                   "new_comment": new_comment, "comment_form": comment_form,
+                   "similar_posts": similar_posts})
