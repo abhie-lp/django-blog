@@ -20,7 +20,15 @@
       <p>This is my blog. There are <strong>{% total_posts %}</strong> posts so far.</p>
       <hr>
       <h3>Latest Posts</h3>
-      {% show_latest_posts 15 %}
+      {% show_latest_posts 10 %}
+      <hr>
+      <h3>Most commented posts</h3>
+      {% get_most_commented_posts 10 as most_commented_posts %}
+      <ul>
+        {% for post in most_commented_posts %}
+          <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
   </body>
 </html>
