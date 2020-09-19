@@ -1,5 +1,5 @@
-from json import loads
 from pathlib import Path
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '&-!qp62n*4^a9m@gva7qczk93$96pp=kh+sd1okqj_050u%8#$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS += [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -118,12 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = BASE_DIR / "static",
 
-with open("email_server.json") as f:
-    creds = loads(f.read())
-    EMAIL_HOST = creds["EMAIL_HOST"]
-    EMAIL_HOST_USER = creds["EMAIL_HOST_USER"]
-    EMAIL_HOST_PASSWORD = creds["EMAIL_HOST_PASSWORD"]
-    EMAIL_PORT = creds["EMAIL_PORT"]
-    EMAIL_USE_TLS = creds["EMAIL_USE_TLS"]
+EMAIL_HOST = environ["EMAIL_HOST"]
+EMAIL_HOST_USER = environ["EMAIL_HOST_USER"]
+EMAIL_HOST_PASSWORD = environ["EMAIL_HOST_PASSWORD"]
+EMAIL_PORT = environ["EMAIL_PORT"]
+EMAIL_USE_TLS = environ["EMAIL_USE_TLS"]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
